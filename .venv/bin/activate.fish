@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/media/anton/data/Anton/coursera_python/.venv"
+set -gx VIRTUAL_ENV "/Users/antonkornienko/Documents/git/coursera_mipt_Python/.venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
