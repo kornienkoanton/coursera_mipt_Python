@@ -1,4 +1,4 @@
-import csv, os, sys, io 
+import csv, os
 
 class CarBase:
    def __init__(self, car_type, brand, photo_file_name, carrying):
@@ -37,7 +37,8 @@ def get_car_list(csv_filename):
       reader = csv.reader(csv_fd, delimiter=';')
       next(reader)
       for row in reader:
-         car_list.append(row)
+			if 
+         car_list.append(class_car)
    return car_list
    
 if __name__ == "__main__":
