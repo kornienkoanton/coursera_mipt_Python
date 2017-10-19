@@ -20,11 +20,11 @@ class Car(CarBase):
 class Truck(CarBase):
 	def __init__(self, car_type, brand, photo_file_name, carrying, body_whl):
 		super().__init__(car_type, brand, photo_file_name, carrying)
-		#body_length, body_width, body_height = [0, 0, 0] if body_whl is None else body_whl.split("x")
-		if body_whl:
-			body_length, body_width, body_height = body_whl.split("x")
-		else:
-			body_length, body_width, body_height = 0, 0, 0
+		body_length, body_width, body_height = [0, 0, 0] if not body_whl else body_whl.split("x")		
+		#if body_whl:
+		#	body_length, body_width, body_height = body_whl.split("x")
+		#else:
+		#	body_length, body_width, body_height = 0, 0, 0
 		self.body_length = float(body_length)
 		self.body_width = float(body_width)
 		self.body_height = float(body_height) 
@@ -63,5 +63,4 @@ def get_car_list(csv_filename):
 if __name__ == "__main__":
 	#csv_filename = sys.argv[1]
 	csv_filename = "/media/anton/data/git/coursera_mipt_Python/week3/coursera_week3_cars.csv"
-	car_list = get_car_list(csv_filename)
-	print (car_list)
+	print (get_car_list(csv_filename))
