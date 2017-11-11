@@ -33,14 +33,26 @@ class Client():
 		if respond.decode().split()[0] == "ok":
 			for data in respond.decode().split("\n")[1:]:
 				if data:
-					key = data.split()[0]
-					val1 = float(data.split()[1])
-					val2 = int(data.split()[2])
+					key, value, timestamp = data.split()
 					if key not in final_data:
-						final_data[key] = [(val2, val1)]
+						final_data[key] = [(int(timestamp), float(value))]
 					else:
-						final_data[key].append((val2, val1))
+						final_data[key].append((int(timestamp), float(value)))
 						final_data[key].sort(key = lambda item: item[0])
 		else:
 			raise ClientError
 		return final_data
+
+	def close(self):
+		self.loop.close()
+
+if __name__ == "__main__":
+	client = Client("127.0.0.1", 10001, timeout=5)
+	client.put("test", 0.5, timestamp=1)
+	client.put("test", 2.0, timestamp=2)
+	client.put("test", 0.5, timestamp=3)
+	client.put("load", 3, timestamp=4)
+	client.put("load", 4, timestamp=5)
+	print(client.get("*"))
+	
+	client.close()
